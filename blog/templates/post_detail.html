@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>jaja's blog</title>
+</head>
+<body>
+    <div class="post-header">
+        <h1><a href="/">Blog do Jajá</a></h1>
+    </div>
+    <div class="content">
+        <div class="post">
+            <h1><a href="">{{ post.titulo }}</a></h1>
+            <div class="textoPost">{{ post.texto|linebreaksbr }}</div>
+            <div clas="dataPost"><p>{{ post.data_publicacao }}</p></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div clas="comentario">
+            <h3>Comentários</h3>
+            {% for comentario in comentarios %}
+                <div clas="textoComentario"><p>{{ comentario.texto }}</p></div>
+                <div clas="dateComentario"><p>Data: {{ comentario.data_publicacao }}</p></div>
+                <div clas="autorComentario"><p>-- {{ comentario.autor }}</p></div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
