@@ -1,0 +1,23 @@
+<html>
+<head>
+<body>
+    <div>
+        <h1>BLOG DO JAJA</h1>
+    </div>
+    {% for post in posts %}
+            <div>
+                <h1><a href="">{{ post.titulo }}</a></h1>
+                <p>{{ post.texto|linebreaksbr }}</p>
+                <p>{{ post.data_publicacao }}</p>
+                {% for comentario in comentarios %}
+                    {% if comentario.post == post %}
+                        <p>Comentário: {{ comentario.texto }}</p>
+                        <p>Autor: {{ comentario.autor }}</p>
+                        <p>Publicado: {{ comentario.data_publicacao }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    {% endfor %}
+</body>
+</head>
+</html>
