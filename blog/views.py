@@ -29,7 +29,7 @@ def post_detail(request, pk):
 
     return render(request, 'post_detail.html', {'post' : post, 'comentarios' : comentarios, 'form' : form})
 
-def new_post(request):
+def post_new(request):
     form = formPost()
 
     if request.method == 'POST':
@@ -41,4 +41,4 @@ def new_post(request):
             post.save()
             return redirect(post_list)
 
-    return render(request, 'new_post.html', {'form': form})
+    return render(request, 'post_new.html', {'form': form})

@@ -10,3 +10,6 @@ class formPost(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('texto', 'data_publicacao', 'titulo',)
+        widgets = {
+            'data_publicacao': forms.DateTimeInput(attrs={'class': 'datetimepicker'})
+        }

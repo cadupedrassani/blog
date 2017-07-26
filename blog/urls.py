@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.post_list),
     url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail),
-    url(r'^newpost$', views.new_post),
+    url(r'^postnew', views.post_new),
 ]

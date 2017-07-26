@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='post',
             name='data_criacao',
-            field=models.DateTimeField(default=django.utils.timezone.now),
+            field= models.DateTimeField(default=django.utils.timezone.now),
         ),
     ]
