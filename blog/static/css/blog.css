@@ -1,0 +1,27 @@
+body {
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+h1 a {
+    color: rgb(91, 137, 222);
+    font-family: Alegreya Sans;
+}
+.post-header h1 a{
+    color: white;
+}
+.post-header {
+    background-color: rgb(91, 137, 222);
+    margin-top: 0;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+}
+
+.post h1 a {
+    font-size: 23px;
+}
+
+.texto {
+    color: rgb(80, 80, 80);
+    font-family: Alegreya Sans !important;
+}

@@ -1,18 +1,26 @@
+{% load staticfiles %}
 <html>
 <head>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya Sans&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <title>jaja's blog</title>
 </head>
 <body>
-     <div class="post-header">
-        <h1><a href="/">Blog do Jajá</a></h1>
+    <div class="image"></div>
+    <div class="post-header col-sm-12">
+        <h1><a href="/">Blog do Jajá</a><h3><a href="/newpost">Novo Post</a></h3></h1>
     </div>
-
-    {% for post in posts %}
+    <div class="content col-sm-12">
         <div class="post">
-            <h1><a href="post/{{ post.id }}">{{ post.titulo }}</a></h1>
-            <div class="texto">{{ post.texto|linebreaksbr }}</div>
-            <div class="date"><p>{{ post.data_publicacao }}</p></div>
+            {% for post in posts %}
+                <h1><a href="/post/{{post.id}}">{{ post.titulo }}</a></h1>
+                <div class="textoPost texto" align="justify"><h4>{{ post.texto|linebreaksbr }}</h4></div>
+                <div clas="dataPost date"><h4>{{ post.data_publicacao }}</h4></div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 </body>
 </html>
