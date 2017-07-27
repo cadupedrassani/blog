@@ -3,12 +3,19 @@ from django.shortcuts import render, redirect
 from .models import Post, Comentario
 from django.utils import timezone
 from .forms import formComentario, formPost
+from django.contrib.auth import login, authenticate
 
 def post_list(request):
+    if request.user.id is None:
+        return redirect(logar)
+
     posts_publicados = Post.objects.order_by('data_publicacao')
     return render(request, 'post_list.html', {'posts' : posts_publicados})
 
 def post_detail(request, pk):
+    if request.user.id is None:
+        return redirect(logar)
+
     post = Post.objects.get(id=pk)
     comentarios = Comentario.objects.filter(post=post)
     form = formComentario()
@@ -22,14 +29,19 @@ def post_detail(request, pk):
             comentario.post = Post.objects.get(id=pk)
             comentario.save()
             return redirect(post_detail, pk=pk)
-        else:
-            post = Post.objects.get(id=pk)
-            comentarios = Comentario.objects.filter(post=post).order_by('data_publicacao')
-            form = formComentario()
+    else:
+        post = Post.objects.get(id=pk)
+        post.visualizacoes = post.visualizacoes + 1
+        post.save()
+        comentarios = Comentario.objects.filter(post=post).order_by('data_publicacao')
+        form = formComentario()
 
     return render(request, 'post_detail.html', {'post' : post, 'comentarios' : comentarios, 'form' : form})
 
 def post_new(request):
+    if request.user.id is None:
+        return redirect(logar)
+
     form = formPost()
 
     if request.method == 'POST':
@@ -42,3 +54,21 @@ def post_new(request):
             return redirect(post_list)
 
     return render(request, 'post_new.html', {'form': form})
+
+def logar(request):
+
+    if request.user.id is not None:
+        return redirect(post_list)
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return redirect(post_list)
+
+    return render(request, 'login.html', {})

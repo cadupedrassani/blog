@@ -9,6 +9,7 @@ class Post(models.Model):
     data_criacao = models.DateTimeField(default=timezone.now)
     data_publicacao = models.DateTimeField(null=True, blank=True)
     autor = models.ForeignKey('auth.User')
+    visualizacoes = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.titulo.encode("utf-8"))

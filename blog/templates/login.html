@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya Sans&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <title>jaja's blog</title>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="login">
+        <form class="form-horizontal" name="LoginForm" action="" method="post">
+            {% csrf_token %}
+            <div class="row login-row">
+                <div class="col-sm-3">
+                    <label class="control-label" for="username">Username</label>
+                    <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+                </div>
+            </div>
+            <div class="row login-row">
+                <div class="col-sm-3">
+                    <label class="control-label" for="password">Password</label>
+                    <input class="form-control" type="text" id="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="row login-row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-default form-control" style="margin-top: 20px;">Logar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
