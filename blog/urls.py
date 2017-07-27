@@ -6,4 +6,6 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail),
     url(r'^postnew/', views.post_new),
     url(r'^$', views.logar),
+    url(r'^usernew/', views.user_new),
+    url(r'^post/(?P<pk>[0-9]+)/edit$', views.post_edit),
 ]

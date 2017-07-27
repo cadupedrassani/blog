@@ -15,9 +15,11 @@
     </div>
     <div class="content col-sm-12">
         <div class="post">
-            <h1><a href="">{{ post.titulo }}</a><a style="float: right;">{{ post.visualizacoes }} visualizações</a></h1>
-            <div class="textoPost texto" align="justify"><h4>{{ post.texto|linebreaksbr }}</h4></div>
-            <div class="dataPost date"><h4>{{ post.data_publicacao }}</h4></div>
+            <div class="post-detail">
+                <h1><a href="">{{ post.titulo }}</a><a style="float: right;">{{ post.visualizacoes }} visualizações</a></h1>
+                <div class="textoPost texto" align="justify"><h4>{{ post.texto|linebreaksbr }}</h4></div>
+                <div class="dataPost date"><h4>{{ post.data_publicacao }}<a href="/post/{{post.id}}/edit" style="float: right">Editar</a></h4></div>
+            </div>
         </div>
     </div>
 
@@ -25,8 +27,10 @@
         <div class="comentario">
             <h3>Comentários</h3>
             {% for comentario in comentarios %}
-                <div class="dataComentario date"><h4>{{ comentario.autor}},&nbsp;{{ comentario.data_publicacao }}</h4></div>
-                <div class="texto" align="justify"><h4>{{ comentario.texto }}</h4></div>
+                <div class="comentario-list">
+                    <div class="dataComentario date"><h4>{{ comentario.autor}},&nbsp;{{ comentario.data_publicacao }}</h4></div>
+                    <div class="texto" align="justify"><h4>{{ comentario.texto }}</h4></div>
+                </div>
             {% endfor %}
         </div>
 

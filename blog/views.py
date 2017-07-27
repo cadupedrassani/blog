@@ -4,6 +4,7 @@ from .models import Post, Comentario
 from django.utils import timezone
 from .forms import formComentario, formPost
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
 def post_list(request):
     if request.user.id is None:
@@ -72,3 +73,30 @@ def logar(request):
                 return redirect(post_list)
 
     return render(request, 'login.html', {})
+
+def user_new(request):
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(logar)
+        else:
+            return render(request, 'user_new.html', {'form' : form})
+    else:
+        form = UserCreationForm();
+        return render(request, 'user_new.html', {'form' : form})
+
+def post_edit(request, pk):
+
+    post = Post.objects.get(id=pk)
+    form = formPost(instance=post)
+
+    if request.method == 'POST':
+        form = formPost(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect(post_list)
+
+    return render(request, 'post_new.html', {'form' : form})

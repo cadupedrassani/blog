@@ -2,6 +2,12 @@ h1 a {
     color: rgb(91, 137, 222);
     font-family: sans-serif;
 }
+
+.content h1 {
+    font-family: sans-serif;
+    color: rgb(91, 137, 222);
+}
+
 .post-header h1 a{
     color: white;
 }
@@ -38,10 +44,6 @@ h1 a {
     font-family: sans-serif;
 }
 
-.dataComentario {
-    margin-top: 30px
-}
-
 label {
     color: rgb(80, 80, 80);
     font-family: sans-serif;
@@ -52,10 +54,41 @@ input {
     font-family: sans-serif;
 }
 
-.login-row {
-    margin-left: 30px;
+span {
+    font-family: sans-serif;
+    color: rgb(91, 137, 222);
 }
 
-.login {
-    padding: 20px;
+li {
+    font-family: sans-serif;
+    color: rgb(91, 137, 222);
+}
+
+.post-list {
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.post-list h1 {
+    margin-top: 0px;
+}
+
+.comentario-list {
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.post-detail {
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.post-detail h1 {
+    margin-top: 0px;
+}
+
+h3 {
+    color: rgb(91, 137, 222) !important;
 }

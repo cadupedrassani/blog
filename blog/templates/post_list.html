@@ -18,9 +18,11 @@
     <div class="content col-sm-12">
         <div class="post">
             {% for post in posts %}
+            <div class="post-list">
                 <h1><a href="/post/{{post.id}}">{{ post.titulo }}</a></h1>
                 <div class="textoPost texto" align="justify"><h4>{{ post.texto|linebreaksbr }}</h4></div>
-                <div class="dataPost date"><h4>{{ post.autor}},&nbsp;{{ post.data_publicacao }}</h4></div>
+                <div class="dataPost date"><h4>{{ post.autor}},&nbsp;{{ post.data_publicacao }}<a href="/post/{{post.id}}/edit" style="float: right">Editar</a></h4></div>
+            </div>
             {% endfor %}
         </div>
     </div>
