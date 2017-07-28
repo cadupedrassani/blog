@@ -18,7 +18,15 @@
             <div class="post-detail">
                 <h1><a href="">{{ post.titulo }}</a><a style="float: right;">{{ post.visualizacoes }} visualizações</a></h1>
                 <div class="textoPost texto" align="justify"><h4>{{ post.texto|linebreaksbr }}</h4></div>
-                <div class="dataPost date"><h4>{{ post.data_publicacao }}<a href="/post/{{post.id}}/edit" style="float: right">Editar</a></h4></div>
+                <div class="dataPost date">
+                    <h4>{{ post.data_publicacao }}</h4>
+                    {% if request.user.is_staff %}
+                        <div class="date">
+                            <a href="/post/{{ post.id }}/edit">Editar</a>
+                            <a href="/post/{{ post.id }}/delete" style="float: right">Excluir</a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

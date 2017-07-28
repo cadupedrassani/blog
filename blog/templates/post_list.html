@@ -11,17 +11,24 @@
 <body>
     <div class="image"></div>
     <div class="post-header col-sm-12">
+        <a href="/logout" style="float:right; font-family: sans-serif; color: white; font-size: 20px">Sair</a>
+        {% if request.user.is_staff %}
+            <a href="/postnew" style="float:right; font-family: sans-serif; color: white; font-size: 20px; margin-right: 10px">Novo Post</a>
+        {% endif %}
         <h1>
             <a href="/">Blog do Jajá</a>
-            <a class="newpost" href="/postnew">Novo Post</a></h1>
+        </h1>
+        <h5 style="font-family: sans-serif; color: white;">{{ request.user }}</h5>
     </div>
     <div class="content col-sm-12">
         <div class="post">
             {% for post in posts %}
             <div class="post-list">
-                <h1><a href="/post/{{post.id}}">{{ post.titulo }}</a></h1>
+                <h1><a href="/post/{{ post.id }}">{{ post.titulo }}</a></h1>
                 <div class="textoPost texto" align="justify"><h4>{{ post.texto|linebreaksbr }}</h4></div>
-                <div class="dataPost date"><h4>{{ post.autor}},&nbsp;{{ post.data_publicacao }}<a href="/post/{{post.id}}/edit" style="float: right">Editar</a></h4></div>
+                <div class="dataPost date">
+                    <h4>{{ post.autor}},&nbsp;{{ post.data_publicacao }}</h4>
+                </div>
             </div>
             {% endfor %}
         </div>
